@@ -69,7 +69,7 @@ export function AnnotationsPanel({ annotations, onClose, onRemove }: Annotations
                 {/* Location */}
                 <p
                   style={{
-                    fontSize: "0.6rem",
+                    fontSize: "0.72rem",
                     letterSpacing: "0.15em",
                     textTransform: "uppercase",
                     color: "var(--accent)",
@@ -83,8 +83,8 @@ export function AnnotationsPanel({ annotations, onClose, onRemove }: Annotations
                 {/* Highlighted text */}
                 <p
                   style={{
-                    fontSize: "0.82rem",
-                    lineHeight: 1.5,
+                    fontSize: "0.92rem",
+                    lineHeight: 1.6,
                     color: "var(--fg)",
                     fontStyle: "italic",
                     background: ann.type === "highlight" ? "rgba(201,169,110,0.15)" : "none",
@@ -94,7 +94,7 @@ export function AnnotationsPanel({ annotations, onClose, onRemove }: Annotations
                     borderRadius: 3,
                   }}
                 >
-                  "{ann.text.length > 120 ? ann.text.slice(0, 120) + "…" : ann.text}"
+                  "{ann.text.length > 200 ? ann.text.slice(0, 200) + "…" : ann.text}"
                 </p>
 
                 {/* Note */}
@@ -106,9 +106,9 @@ export function AnnotationsPanel({ annotations, onClose, onRemove }: Annotations
                       background: "rgba(201,169,110,0.08)",
                       border: "1px solid rgba(201,169,110,0.2)",
                       borderRadius: 6,
-                      fontSize: "0.78rem",
+                      fontSize: "0.88rem",
                       color: "var(--fg)",
-                      lineHeight: 1.5,
+                      lineHeight: 1.6,
                     }}
                   >
                     {ann.note}
