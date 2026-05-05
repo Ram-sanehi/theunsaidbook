@@ -130,7 +130,7 @@ body {
 }
 
 .cover-begin-btn {
-  margin-top: 0.75rem;
+  margin-top: 0.35rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1235,7 +1235,8 @@ body {
   max-width: 420px;
   background: var(--surface);
   border-radius: 16px 16px 0 0;
-  padding: 1.25rem 1.25rem max(1.25rem, env(safe-area-inset-bottom, 1.25rem));
+  padding: 1.25rem 1.25rem calc(1.25rem + max(1rem, env(safe-area-inset-bottom, 1rem)));
+  margin-bottom: max(1rem, env(safe-area-inset-bottom, 1rem));
 }
 .note-input-card textarea {
   width: 100%;

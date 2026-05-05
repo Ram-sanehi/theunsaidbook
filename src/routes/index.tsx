@@ -32,34 +32,16 @@ function CoverPage() {
     }
     return true;
   });
-  const [greetingIndex, setGreetingIndex] = useState(0);
-
-  const greetings = [
-    "Welcome to a story that starts with forgotten earrings and ends with a love that rewrote forever.",
-    "Some moments arrive quietly. Some people do too. This is about both.",
-    "You're about to read the story of Aarav and Palak — a love letter written in silence and grief.",
-    "The best stories teach us not how to live, but how to remember what it means to have truly loved.",
-    "Before you begin: breathe. Make yourself comfortable. Some stories demand of you that you sit with them.",
-    "This is the tale of a man who kept the small things she forgot, and lost the one thing he couldn't hold onto.",
-  ];
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (showIntro) {
-      // Switch greetings every 800ms
-      const greetingInterval = setInterval(() => {
-        setGreetingIndex((prev) => (prev + 1) % greetings.length);
-      }, 800);
-
       const hideIntro = setTimeout(() => {
         setShowIntro(false);
         sessionStorage.setItem("tgwfhe_intro_seen", "true");
-      }, 5500);
+      }, 6000);
 
-      return () => {
-        clearInterval(greetingInterval);
-        clearTimeout(hideIntro);
-      };
+      return () => clearTimeout(hideIntro);
     }
   }, [showIntro]);
 
@@ -100,30 +82,61 @@ function CoverPage() {
               position: "fixed",
               inset: 0,
               zIndex: 1000,
-              background: "var(--bg)",
+              background: "#0b0f1a",
               display: "flex",
+              flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
               padding: "2rem",
+              gap: "1.5rem",
             }}
           >
+            {/* Decorative gold line */}
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 0.4 }}
+              transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+              style={{
+                width: "60px",
+                height: "1px",
+                background: "linear-gradient(90deg, transparent, #c9a96e, transparent)",
+              }}
+            />
+
+            {/* Main greeting */}
             <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 0.9, y: 0 }}
+              transition={{ duration: 1.8, delay: 0.6, ease: "easeOut" }}
               style={{
                 fontFamily: "'Playfair Display', Georgia, serif",
                 fontSize: "1.2rem",
-                lineHeight: 1.8,
-                color: "var(--fg)",
+                lineHeight: 2,
+                color: "#e6e1d9",
                 textAlign: "center",
-                maxWidth: "600px",
+                maxWidth: "480px",
                 fontStyle: "italic",
-                opacity: 0.85,
               }}
             >
-              {greetings[greetingIndex]}
+              Some stories ask you to sit with them a while.
+              <br />
+              This is one of those.
+            </motion.p>
+
+            {/* Subtle secondary line */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.4 }}
+              transition={{ duration: 1.5, delay: 2.5, ease: "easeOut" }}
+              style={{
+                fontFamily: "'Palatino Linotype', Georgia, serif",
+                fontSize: "0.72rem",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                color: "#c9a96e",
+              }}
+            >
+              breathe.
             </motion.p>
           </motion.div>
         )}
@@ -155,7 +168,7 @@ function CoverPage() {
         style={{
           flex: "1 1 0",
           minHeight: 0,
-          maxHeight: "calc(100vh - 10rem)",
+          maxHeight: "calc(100vh - 7rem)",
           width: "100%",
           maxWidth: "640px",
           display: "flex",
