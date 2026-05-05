@@ -147,7 +147,7 @@ function CoverPage() {
         />
       ))}
 
-      {/* Cover Card Container */}
+      {/* Cover Image */}
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -157,22 +157,9 @@ function CoverPage() {
           minHeight: 0,
           width: "100%",
           maxWidth: "640px",
-          aspectRatio: "3 / 4.5",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "rgba(18, 21, 34, 0.6)",
-          border: "1.5px solid rgba(201, 168, 76, 0.25)",
-          borderRadius: "16px",
-          padding: "0.75rem 0.2rem",
-          backdropFilter: "blur(12px)",
-          boxShadow:
-            "0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(201, 169, 110, 0.1), inset 0 0 30px rgba(201, 169, 110, 0.08)",
-          transition: "all 0.3s ease",
-        }}
-        whileHover={{
-          boxShadow:
-            "0 30px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(201, 169, 110, 0.15), inset 0 0 40px rgba(201, 169, 110, 0.12)",
         }}
       >
         <img
