@@ -22,8 +22,53 @@ const EMOTION_OPTIONS = [
 
 const STORAGE_KEY = "tgwfhe_feedback";
 
-function saveFeedback(data: FeedbackData) {
+// Get your free access key at https://web3forms.com (enter your email, get key instantly)
+const WEB3FORMS_KEY = "YOUR_ACCESS_KEY_HERE";
+
+async function sendFeedback(data: FeedbackData): Promise<boolean> {
+  // Always save locally as backup
   localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...data, submittedAt: Date.now() }));
+
+  // Build readable message
+  const message = [
+    `⭐ Rating: ${data.rating}/5`,
+    `💭 Emotion: ${data.emotion}`,
+    `👍 Would Recommend: ${data.wouldRecommend === true ? "Yes" : data.wouldRecommend === false ? "Maybe" : "Not answered"}`,
+    data.openText ? `\n📝 Message:\n${data.openText}` : "",
+    data.favoriteQuote ? `\n💎 Favorite Quote:\n"${data.favoriteQuote}"` : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  // Try Web3Forms API
+  if (WEB3FORMS_KEY !== "YOUR_ACCESS_KEY_HERE") {
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: "📖 New Reader Feedback — The Girl Who Forgot Her Earrings",
+          from_name: "Book Reader",
+          message,
+          rating: data.rating,
+          emotion: data.emotion,
+          would_recommend: data.wouldRecommend,
+          open_text: data.openText,
+          favorite_quote: data.favoriteQuote,
+        }),
+      });
+      if (res.ok) return true;
+    } catch {
+      // Fall through to mailto
+    }
+  }
+
+  // Fallback: open mailto with pre-filled feedback
+  const subject = encodeURIComponent("Reader Feedback — The Girl Who Forgot Her Earrings");
+  const body = encodeURIComponent(message);
+  window.open(`mailto:vish6933@gmail.com?subject=${subject}&body=${body}`, "_blank");
+  return true;
 }
 
 export function BookFeedback() {
@@ -42,8 +87,8 @@ export function BookFeedback() {
 
   const update = (patch: Partial<FeedbackData>) => setData((d) => ({ ...d, ...patch }));
 
-  const submit = useCallback(() => {
-    saveFeedback(data);
+  const submit = useCallback(async () => {
+    await sendFeedback(data);
     setStep("done");
   }, [data]);
 
