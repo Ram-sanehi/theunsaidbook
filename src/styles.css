@@ -991,6 +991,9 @@ body {
   overflow-x: hidden;
   padding: 2.5rem 2rem 5rem;
   scroll-behavior: smooth;
+  -webkit-touch-callout: none;
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 /* Custom scrollbar — ultra-thin, nearly invisible at rest */

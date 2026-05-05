@@ -551,7 +551,7 @@ function Reader({ ch }: { ch: (typeof chapters)[0] }) {
           </div>
 
           {/* Scrollable text content */}
-          <div className="card-scroll" ref={scrollRef} onScroll={handleScroll}>
+          <div className="card-scroll" ref={scrollRef} onScroll={handleScroll} onContextMenu={(e) => e.preventDefault()}>
             <div className="card-chapter-header">
               <span className="card-chapter-label">
                 {ch.chapterNumber === 0
