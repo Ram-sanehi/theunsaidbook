@@ -161,7 +161,7 @@ function CoverPage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          marginBottom: "0.25rem",
+          marginBottom: 0,
         }}
       >
         <img
