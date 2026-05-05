@@ -753,6 +753,11 @@ function Reader({ ch }: { ch: (typeof chapters)[0] }) {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 16 }}
+          drag
+          dragConstraints={{ top: -300, bottom: 300, left: -150, right: 150 }}
+          dragMomentum={false}
+          dragElastic={0.1}
+          whileDrag={{ scale: 1.05 }}
           style={{
             position: "fixed",
             top: "45%",
@@ -768,6 +773,8 @@ function Reader({ ch }: { ch: (typeof chapters)[0] }) {
             padding: "0.45rem 1rem",
             backdropFilter: "blur(12px)",
             boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+            cursor: "grab",
+            touchAction: "none",
           }}
         >
           {/* Play/Pause */}
