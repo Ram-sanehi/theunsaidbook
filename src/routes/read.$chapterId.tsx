@@ -755,9 +755,9 @@ function Reader({ ch }: { ch: (typeof chapters)[0] }) {
           exit={{ opacity: 0, y: 16 }}
           style={{
             position: "fixed",
-            bottom: "1.5rem",
+            top: "45%",
             left: "50%",
-            transform: "translateX(-50%)",
+            transform: "translate(-50%, -50%)",
             zIndex: 60,
             display: "flex",
             alignItems: "center",
