@@ -60,14 +60,14 @@ function CoverPage() {
     <div
       className="cover-page"
       style={{
-        height: "100vh",
+        height: "100dvh",
         width: "100vw",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
-        padding: "0.5rem 0.5rem 1rem",
+        padding: "0.5rem 0.5rem 2.5rem",
         boxSizing: "border-box",
       }}
     >
@@ -168,7 +168,7 @@ function CoverPage() {
         style={{
           flex: "1 1 0",
           minHeight: 0,
-          maxHeight: "calc(100vh - 7rem)",
+          maxHeight: "calc(100dvh - 9rem)",
           width: "100%",
           maxWidth: "640px",
           display: "flex",

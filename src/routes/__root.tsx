@@ -1,4 +1,5 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { FloatingParticles } from "../components/FloatingParticles";
 
 import appCss from "../styles.css?url";
 
@@ -78,5 +79,10 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <>
+      <FloatingParticles />
+      <Outlet />
+    </>
+  );
 }
