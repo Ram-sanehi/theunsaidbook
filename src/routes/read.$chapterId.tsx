@@ -448,7 +448,7 @@ function Reader({ ch }: { ch: (typeof chapters)[0] }) {
                 color: "rgba(201,168,76,0.6)",
               }}
             >
-              Take your time. The next chapter awaits.
+              Breathe. Turn the page.
             </motion.p>
 
             {/* Bottom decorative divider */}
