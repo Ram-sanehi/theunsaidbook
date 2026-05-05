@@ -153,13 +153,15 @@ function CoverPage() {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
         style={{
-          flex: 1,
+          flex: "1 1 0",
           minHeight: 0,
+          maxHeight: "calc(100vh - 8rem)",
           width: "100%",
           maxWidth: "640px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          marginBottom: "0.75rem",
         }}
       >
         <img
