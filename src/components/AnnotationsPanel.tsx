@@ -16,7 +16,7 @@ export function AnnotationsPanel({ annotations, onClose, onRemove }: Annotations
       <div key="ann-overlay" className="toc-overlay" onClick={onClose} />
       <motion.div
         key="ann-sheet"
-        className="toc-sheet"
+        className="ann-sheet"
         initial={{ y: "100%" }}
         animate={{ y: 0 }}
         exit={{ y: "100%" }}
