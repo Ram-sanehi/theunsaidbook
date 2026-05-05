@@ -85,7 +85,7 @@ function CoverPage() {
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
-        padding: "1rem",
+        padding: "0.5rem 0.5rem 1rem",
         boxSizing: "border-box",
       }}
     >
@@ -155,13 +155,13 @@ function CoverPage() {
         style={{
           flex: "1 1 0",
           minHeight: 0,
-          maxHeight: "calc(100vh - 8rem)",
+          maxHeight: "calc(100vh - 10rem)",
           width: "100%",
           maxWidth: "640px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          marginBottom: "0.75rem",
+          marginBottom: "0.25rem",
         }}
       >
         <img
