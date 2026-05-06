@@ -178,7 +178,7 @@ function CoverPage() {
         }}
       >
         <img
-          src="/images/coverpage.png"
+          src="/images/coverpage1.jpeg"
           alt="The Girl Who Forgot Her Earrings"
           style={{
             maxWidth: "100%",
