@@ -1,19 +1,14 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 
-export type ScrollSpeed = "slow" | "medium" | "fast";
+export type ScrollSpeed = number;
 
-const SPEED_PX_PER_SEC: Record<ScrollSpeed, number> = {
-  slow: 18,
-  medium: 35,
-  fast: 65,
-};
 
 export function useAutoScroll(
   containerRef: React.RefObject<HTMLDivElement | null>,
   active: boolean,
 ) {
   const [scrolling, setScrolling] = useState(false);
-  const [speed, setSpeed] = useState<ScrollSpeed>("medium");
+  const [speed, setSpeed] = useState<ScrollSpeed>(30);
 
   // Internal refs — never cause re-renders
   const rafRef = useRef<number | null>(null);
@@ -21,7 +16,7 @@ export function useAutoScroll(
   const accumRef = useRef(0); // fractional pixel accumulator
   const pausedRef = useRef(false);
   const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const speedRef = useRef<ScrollSpeed>("medium");
+  const speedRef = useRef<ScrollSpeed>(30);
   const scrollingRef = useRef(false);
 
   // Keep refs in sync with state
@@ -51,7 +46,7 @@ export function useAutoScroll(
 
       if (!pausedRef.current && lastTimeRef.current !== null) {
         const delta = ts - lastTimeRef.current;
-        accumRef.current += (SPEED_PX_PER_SEC[speedRef.current] * delta) / 1000;
+        accumRef.current += (speedRef.current * delta) / 1000;
 
         // Only scroll whole pixels to avoid sub-pixel jitter
         const px = Math.floor(accumRef.current);

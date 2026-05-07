@@ -17,7 +17,6 @@ import { AnnotationToolbar } from "../components/AnnotationToolbar";
 import { AnnotationsPanel } from "../components/AnnotationsPanel";
 import { MemoryShelf } from "../components/MemoryShelf";
 import { QuoteShareModal } from "../components/QuoteShareModal";
-import { AmbientSoundControl } from "../components/AmbientSoundControl";
 import { BookFeedback } from "../components/BookFeedback";
 
 /* ─── Route ──────────────────────────────────────────── */
@@ -802,28 +801,28 @@ function Reader({ ch }: { ch: (typeof chapters)[0] }) {
           {/* Divider */}
           <div style={{ width: 1, height: 16, background: "rgba(255,255,255,0.1)" }} />
 
-          {/* Speed buttons */}
-          {(["slow", "medium", "fast"] as const).map((s) => (
-            <button
-              key={s}
-              onClick={() => setAutoScrollSpeed(s)}
+          {/* Speed slider */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", padding: "0 0.5rem" }}>
+            <span style={{ fontSize: "0.6rem", color: "rgba(255,255,255,0.3)", textTransform: "uppercase" }}>Speed</span>
+            <input
+              type="range"
+              min={10}
+              max={120}
+              step={1}
+              value={autoScrollSpeed}
+              onChange={(e) => setAutoScrollSpeed(parseInt(e.target.value))}
               style={{
-                background: autoScrollSpeed === s ? "rgba(201,168,76,0.15)" : "none",
-                border: "none",
-                borderRadius: "999px",
-                padding: "0.2rem 0.6rem",
+                width: "80px",
+                height: "2px",
+                background: "rgba(201,168,76,0.2)",
+                accentColor: "#c9a84c",
                 cursor: "pointer",
-                color: autoScrollSpeed === s ? "#c9a84c" : "rgba(255,255,255,0.35)",
-                fontSize: "0.65rem",
-                letterSpacing: "0.08em",
-                fontFamily: "'Palatino Linotype', Georgia, serif",
-                textTransform: "uppercase",
-                transition: "all 0.2s",
+                appearance: "none",
+                outline: "none",
+                borderRadius: "1px",
               }}
-            >
-              {s}
-            </button>
-          ))}
+            />
+          </div>
 
           {/* Divider */}
           <div style={{ width: 1, height: 16, background: "rgba(255,255,255,0.1)" }} />
@@ -849,8 +848,7 @@ function Reader({ ch }: { ch: (typeof chapters)[0] }) {
         </motion.div>
       )}
 
-      {/* Ambient Sound */}
-      <AmbientSoundControl />
+      {/* Ambient Sound removed from here, moved to root */}
 
       {/* ToC */}
       {showToc && (

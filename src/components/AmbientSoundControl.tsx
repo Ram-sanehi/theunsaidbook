@@ -5,7 +5,7 @@ import { useAmbientSound, type SoundTrack } from "../hooks/useAmbientSound";
 const TRACKS: { id: SoundTrack; label: string; icon: string }[] = [
   { id: "off", label: "Silence", icon: "○" },
   { id: "rain", label: "Rain", icon: "🌧" },
-  { id: "quiet_room", label: "Quiet Room", icon: "◻" },
+  { id: "calm", label: "Calm", icon: "🍃" },
   { id: "night", label: "Night", icon: "🌙" },
 ];
 
@@ -28,8 +28,8 @@ export function AmbientSoundControl() {
               background: "var(--surface)",
               border: "1px solid rgba(201,168,76,0.2)",
               borderRadius: "12px",
-              padding: "1rem",
-              width: "180px",
+              padding: "0.75rem",
+              width: "150px",
               boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
             }}
             onClick={(e) => e.stopPropagation()}
@@ -38,8 +38,8 @@ export function AmbientSoundControl() {
             <p
               style={{
                 fontFamily: "'Palatino Linotype', Georgia, serif",
-                fontSize: "0.65rem",
-                letterSpacing: "0.1em",
+                fontSize: "0.6rem",
+                letterSpacing: "0.08em",
                 textTransform: "uppercase",
                 color: "var(--muted)",
                 marginBottom: "0.75rem",
@@ -49,7 +49,7 @@ export function AmbientSoundControl() {
             </p>
 
             {/* Track buttons */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
               {TRACKS.map((t) => (
                 <button
                   key={t.id}
@@ -59,9 +59,9 @@ export function AmbientSoundControl() {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: "0.6rem",
+                    gap: "0.5rem",
                     width: "100%",
-                    padding: "0.5rem 0.6rem",
+                    padding: "0.4rem 0.5rem",
                     background:
                       track === t.id
                         ? "rgba(201,168,76,0.15)"
@@ -73,12 +73,12 @@ export function AmbientSoundControl() {
                     cursor: "pointer",
                     color: track === t.id ? "#c9a84c" : "var(--muted)",
                     fontFamily: "'Palatino Linotype', Georgia, serif",
-                    fontSize: "0.85rem",
+                    fontSize: "0.8rem",
                     transition: "all 0.2s ease",
                   }}
                   title={t.label}
                 >
-                  <span style={{ fontSize: "1.1rem", minWidth: "24px", textAlign: "center" }}>
+                  <span style={{ fontSize: "1rem", minWidth: "20px", textAlign: "center" }}>
                     {t.icon}
                   </span>
                   <span style={{ flex: 1, textAlign: "left" }}>{t.label}</span>
@@ -131,7 +131,7 @@ export function AmbientSoundControl() {
                     value={Math.round(volume * 100)}
                     onChange={(e) => changeVolume(parseInt(e.target.value) / 100)}
                     style={{
-                      flex: 1,
+                      width: "80px",
                       height: "4px",
                       borderRadius: "2px",
                       background: "rgba(201,168,76,0.2)",
@@ -180,7 +180,7 @@ export function AmbientSoundControl() {
           transition: "all 0.2s ease",
         }}
       >
-        {track === "rain" ? "🌧" : track === "night" ? "🌙" : track === "quiet_room" ? "◻" : "♪"}
+        {track === "rain" ? "🌧" : track === "night" ? "🌙" : track === "calm" ? "🍃" : "♪"}
       </motion.button>
     </div>
   );

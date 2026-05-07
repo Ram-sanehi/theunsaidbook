@@ -1,19 +1,19 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 
-export type SoundTrack = "off" | "rain" | "quiet_room" | "night";
+export type SoundTrack = "off" | "rain" | "calm" | "night";
 
-// High-quality free ambient sounds from reliable sources
+// Local high-quality ambient sounds
 const SOUND_URLS: Record<Exclude<SoundTrack, "off">, string> = {
-  rain: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", // Fallback ambient
-  quiet_room: "https://cdn.pixabay.com/audio/2022/01/18/audio_d0c6ff1bab.mp3",
-  night: "https://cdn.pixabay.com/audio/2021/09/06/audio_2ccf38e3a7.mp3",
+  rain: "/music/rain.mp3",
+  calm: "/music/calm.mp3",
+  night: "/music/night.mp3",
 };
 
-// Backup URLs for when primary fails
+// No backups needed for local files
 const BACKUP_URLS: Record<Exclude<SoundTrack, "off">, string> = {
-  rain: "https://freepd.com/audio/Rain.mp3",
-  quiet_room: "https://freepd.com/audio/Ambient.mp3",
-  night: "https://freepd.com/audio/Night.mp3",
+  rain: "/music/rain.mp3",
+  calm: "/music/calm.mp3",
+  night: "/music/night.mp3",
 };
 
 const TRACK_KEY = "tgwfhe_sound_track";
@@ -41,7 +41,6 @@ export function useAmbientSound() {
     if (track === "off") return;
 
     const audio = new Audio();
-    audio.crossOrigin = "anonymous";
     audio.loop = true;
     audio.volume = volume;
 

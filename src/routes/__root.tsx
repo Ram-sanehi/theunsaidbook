@@ -1,5 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { FloatingParticles } from "../components/FloatingParticles";
+import { AmbientSoundControl } from "../components/AmbientSoundControl";
 
 import appCss from "../styles.css?url";
 
@@ -83,6 +84,7 @@ function RootComponent() {
     <>
       <FloatingParticles />
       <Outlet />
+      <AmbientSoundControl />
     </>
   );
 }
