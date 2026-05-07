@@ -23,6 +23,10 @@
       "dest": "/images/$1"
     },
     {
+      "src": "/music/(.+)",
+      "dest": "/music/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "api/handler"
     }
